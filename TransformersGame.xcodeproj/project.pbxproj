@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F4A65DF24B6A6CD00D53C3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A65DE24B6A6CD00D53C3B /* AppDelegate.swift */; };
+		3F4A65E124B6A6CD00D53C3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A65E024B6A6CD00D53C3B /* SceneDelegate.swift */; };
+		3F4A65E324B6A6CD00D53C3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A65E224B6A6CD00D53C3B /* ViewController.swift */; };
+		3F4A65E624B6A6CD00D53C3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A65E424B6A6CD00D53C3B /* Main.storyboard */; };
+		3F4A65E824B6A6CE00D53C3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A65E724B6A6CE00D53C3B /* Assets.xcassets */; };
+		3F4A65EB24B6A6CE00D53C3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A65E924B6A6CE00D53C3B /* LaunchScreen.storyboard */; };
+		3F4A65F624B6A6CE00D53C3B /* TransformersGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A65F524B6A6CE00D53C3B /* TransformersGameTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F4A65F224B6A6CE00D53C3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F4A65D324B6A6CD00D53C3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F4A65DA24B6A6CD00D53C3B;
+			remoteInfo = TransformersGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3F4A65DB24B6A6CD00D53C3B /* TransformersGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransformersGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F4A65DE24B6A6CD00D53C3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3F4A65E024B6A6CD00D53C3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3F4A65E224B6A6CD00D53C3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F4A65E524B6A6CD00D53C3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3F4A65E724B6A6CE00D53C3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F4A65EA24B6A6CE00D53C3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3F4A65EC24B6A6CE00D53C3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F4A65F124B6A6CE00D53C3B /* TransformersGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransformersGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F4A65F524B6A6CE00D53C3B /* TransformersGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformersGameTests.swift; sourceTree = "<group>"; };
+		3F4A65F724B6A6CE00D53C3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F4A65D824B6A6CD00D53C3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F4A65EE24B6A6CE00D53C3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F4A65D224B6A6CD00D53C3B = {
+			isa = PBXGroup;
+			children = (
+				3F4A65DD24B6A6CD00D53C3B /* TransformersGame */,
+				3F4A65F424B6A6CE00D53C3B /* TransformersGameTests */,
+				3F4A65DC24B6A6CD00D53C3B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F4A65DC24B6A6CD00D53C3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F4A65DB24B6A6CD00D53C3B /* TransformersGame.app */,
+				3F4A65F124B6A6CE00D53C3B /* TransformersGameTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F4A65DD24B6A6CD00D53C3B /* TransformersGame */ = {
+			isa = PBXGroup;
+			children = (
+				3F4A65DE24B6A6CD00D53C3B /* AppDelegate.swift */,
+				3F4A65E024B6A6CD00D53C3B /* SceneDelegate.swift */,
+				3F4A65E224B6A6CD00D53C3B /* ViewController.swift */,
+				3F4A65E424B6A6CD00D53C3B /* Main.storyboard */,
+				3F4A65E724B6A6CE00D53C3B /* Assets.xcassets */,
+				3F4A65E924B6A6CE00D53C3B /* LaunchScreen.storyboard */,
+				3F4A65EC24B6A6CE00D53C3B /* Info.plist */,
+			);
+			path = TransformersGame;
+			sourceTree = "<group>";
+		};
+		3F4A65F424B6A6CE00D53C3B /* TransformersGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F4A65F524B6A6CE00D53C3B /* TransformersGameTests.swift */,
+				3F4A65F724B6A6CE00D53C3B /* Info.plist */,
+			);
+			path = TransformersGameTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F4A65DA24B6A6CD00D53C3B /* TransformersGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F4A65FA24B6A6CE00D53C3B /* Build configuration list for PBXNativeTarget "TransformersGame" */;
+			buildPhases = (
+				3F4A65D724B6A6CD00D53C3B /* Sources */,
+				3F4A65D824B6A6CD00D53C3B /* Frameworks */,
+				3F4A65D924B6A6CD00D53C3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TransformersGame;
+			productName = TransformersGame;
+			productReference = 3F4A65DB24B6A6CD00D53C3B /* TransformersGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3F4A65F024B6A6CE00D53C3B /* TransformersGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F4A65FD24B6A6CE00D53C3B /* Build configuration list for PBXNativeTarget "TransformersGameTests" */;
+			buildPhases = (
+				3F4A65ED24B6A6CE00D53C3B /* Sources */,
+				3F4A65EE24B6A6CE00D53C3B /* Frameworks */,
+				3F4A65EF24B6A6CE00D53C3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F4A65F324B6A6CE00D53C3B /* PBXTargetDependency */,
+			);
+			name = TransformersGameTests;
+			productName = TransformersGameTests;
+			productReference = 3F4A65F124B6A6CE00D53C3B /* TransformersGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F4A65D324B6A6CD00D53C3B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Gustavo Kin";
+				TargetAttributes = {
+					3F4A65DA24B6A6CD00D53C3B = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					3F4A65F024B6A6CE00D53C3B = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 3F4A65DA24B6A6CD00D53C3B;
+					};
+				};
+			};
+			buildConfigurationList = 3F4A65D624B6A6CD00D53C3B /* Build configuration list for PBXProject "TransformersGame" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3F4A65D224B6A6CD00D53C3B;
+			productRefGroup = 3F4A65DC24B6A6CD00D53C3B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F4A65DA24B6A6CD00D53C3B /* TransformersGame */,
+				3F4A65F024B6A6CE00D53C3B /* TransformersGameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F4A65D924B6A6CD00D53C3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4A65EB24B6A6CE00D53C3B /* LaunchScreen.storyboard in Resources */,
+				3F4A65E824B6A6CE00D53C3B /* Assets.xcassets in Resources */,
+				3F4A65E624B6A6CD00D53C3B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F4A65EF24B6A6CE00D53C3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F4A65D724B6A6CD00D53C3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4A65E324B6A6CD00D53C3B /* ViewController.swift in Sources */,
+				3F4A65DF24B6A6CD00D53C3B /* AppDelegate.swift in Sources */,
+				3F4A65E124B6A6CD00D53C3B /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F4A65ED24B6A6CE00D53C3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4A65F624B6A6CE00D53C3B /* TransformersGameTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F4A65F324B6A6CE00D53C3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F4A65DA24B6A6CD00D53C3B /* TransformersGame */;
+			targetProxy = 3F4A65F224B6A6CE00D53C3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3F4A65E424B6A6CD00D53C3B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F4A65E524B6A6CD00D53C3B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3F4A65E924B6A6CE00D53C3B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F4A65EA24B6A6CE00D53C3B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F4A65F824B6A6CE00D53C3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3F4A65F924B6A6CE00D53C3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F4A65FB24B6A6CE00D53C3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TransformersGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TransformersGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F4A65FC24B6A6CE00D53C3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TransformersGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TransformersGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3F4A65FE24B6A6CE00D53C3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TransformersGameTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TransformersGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TransformersGame.app/TransformersGame";
+			};
+			name = Debug;
+		};
+		3F4A65FF24B6A6CE00D53C3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TransformersGameTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TransformersGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TransformersGame.app/TransformersGame";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F4A65D624B6A6CD00D53C3B /* Build configuration list for PBXProject "TransformersGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F4A65F824B6A6CE00D53C3B /* Debug */,
+				3F4A65F924B6A6CE00D53C3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F4A65FA24B6A6CE00D53C3B /* Build configuration list for PBXNativeTarget "TransformersGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F4A65FB24B6A6CE00D53C3B /* Debug */,
+				3F4A65FC24B6A6CE00D53C3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F4A65FD24B6A6CE00D53C3B /* Build configuration list for PBXNativeTarget "TransformersGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F4A65FE24B6A6CE00D53C3B /* Debug */,
+				3F4A65FF24B6A6CE00D53C3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F4A65D324B6A6CD00D53C3B /* Project object */;
+}
