@@ -16,7 +16,7 @@ class APIMAnager {
     typealias headers = [String : String]
     
     enum ApiResult {
-        case success(JSON?)
+        case success(Data?)
         case failure(RequestError)
     }
     
@@ -30,10 +30,10 @@ class APIMAnager {
     enum RequestError: Error {
         case unknownError
         case connectionError
+        case authorizationHeaderFormatError
         case authorizationError
         case invalidRequest
         case notFound
-        case invalidResponse
         case serverError
     }
     
@@ -57,16 +57,10 @@ class APIMAnager {
                 } else if let response = response as? HTTPURLResponse {
                     switch response.statusCode {
                     case 200...299:
-                        var json: JSON? = nil
-                        if let data = data {
-                            do {
-                                json = try JSON(data: data)
-                            } catch {
-                                completion(ApiResult.failure(.invalidResponse))
-                            }
-                        }
-                        completion(ApiResult.success(json))
+                        completion(ApiResult.success(data))
                     case 401:
+                        completion(ApiResult.failure(.authorizationHeaderFormatError))
+                    case 403:
                         completion(ApiResult.failure(.authorizationError))
                     case 404:
                         completion(ApiResult.failure(.notFound))
@@ -75,7 +69,6 @@ class APIMAnager {
                     default:
                         completion(ApiResult.failure(.unknownError))
                     }
-                    
                 }
             }.resume()
         } catch {
