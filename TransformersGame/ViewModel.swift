@@ -12,20 +12,6 @@ class ViewModel {
     
     var list: [Transformer] = []
     
-    func generateToken() {
-        APIMAnager.requestData(path: "allspark", method: .get, parameters: nil, header: nil) { (result) in
-            switch result {
-            case .success(let data):
-                if let data = data, let token = String(data: data, encoding: .utf8) {
-                    print(token)
-                    KeychainService.save(service: KeychainConstant.tokenKey, token: token as NSString)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     func create(_ transformer: Transformer) {
         let token = KeychainService.load(service: KeychainConstant.tokenKey) as String?
         let headers = [

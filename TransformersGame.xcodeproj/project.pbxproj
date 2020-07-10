@@ -21,6 +21,10 @@
 		3F8F97BD24B6C70D00281D5C /* app.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F97BC24B6C70D00281D5C /* app.strings */; };
 		3F8F97C124B6CD7500281D5C /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F97C024B6CD7500281D5C /* Transformer.swift */; };
 		3F8F97C324B6D66600281D5C /* TransformersListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F97C224B6D66600281D5C /* TransformersListResponse.swift */; };
+		3F8F97C624B7858600281D5C /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F97C524B7858600281D5C /* SplashScreenViewController.swift */; };
+		3F8F97C924B786EB00281D5C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F97C824B786EB00281D5C /* Images.xcassets */; };
+		3F8F97CC24B7A38900281D5C /* SplashScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F97CB24B7A38900281D5C /* SplashScreenViewModel.swift */; };
+		3F8F97CE24B8072600281D5C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F97CD24B8072600281D5C /* MainViewController.swift */; };
 		85A936CED988DEA5688BC458 /* Pods_TransformersGameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5975CEA2FC36B24A42D997 /* Pods_TransformersGameTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +56,10 @@
 		3F8F97BC24B6C70D00281D5C /* app.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = app.strings; sourceTree = "<group>"; };
 		3F8F97C024B6CD7500281D5C /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		3F8F97C224B6D66600281D5C /* TransformersListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformersListResponse.swift; sourceTree = "<group>"; };
+		3F8F97C524B7858600281D5C /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		3F8F97C824B786EB00281D5C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3F8F97CB24B7A38900281D5C /* SplashScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModel.swift; sourceTree = "<group>"; };
+		3F8F97CD24B8072600281D5C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7CEB18B595E9E2B8217CF6E5 /* Pods-TransformersGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransformersGame.debug.xcconfig"; path = "Target Support Files/Pods-TransformersGame/Pods-TransformersGame.debug.xcconfig"; sourceTree = "<group>"; };
 		8B30FA402E43F0316A048A0A /* Pods-TransformersGameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransformersGameTests.debug.xcconfig"; path = "Target Support Files/Pods-TransformersGameTests/Pods-TransformersGameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B21F6A87AA3ABC318841B26 /* Pods-TransformersGameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransformersGameTests.release.xcconfig"; path = "Target Support Files/Pods-TransformersGameTests/Pods-TransformersGameTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,8 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				3F8F97BB24B6C6F600281D5C /* Assets */,
-				3F8F97B824B6C08E00281D5C /* Model */,
 				3F8F97B324B6ADA400281D5C /* Helper */,
+				3F8F97B824B6C08E00281D5C /* Model */,
+				3F8F97C424B7856500281D5C /* View */,
+				3F8F97CA24B7957F00281D5C /* ViewModel */,
 				3F4A65DE24B6A6CD00D53C3B /* AppDelegate.swift */,
 				3F4A65E024B6A6CD00D53C3B /* SceneDelegate.swift */,
 				3F4A65E224B6A6CD00D53C3B /* ViewController.swift */,
@@ -148,9 +158,35 @@
 		3F8F97BB24B6C6F600281D5C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3F8F97C724B786D000281D5C /* Images */,
 				3F8F97BC24B6C70D00281D5C /* app.strings */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		3F8F97C424B7856500281D5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F8F97C524B7858600281D5C /* SplashScreenViewController.swift */,
+				3F8F97CD24B8072600281D5C /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F8F97C724B786D000281D5C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3F8F97C824B786EB00281D5C /* Images.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		3F8F97CA24B7957F00281D5C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F8F97CB24B7A38900281D5C /* SplashScreenViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		7DDB768CE2163FB77520AAE4 /* Frameworks */ = {
@@ -258,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F8F97BD24B6C70D00281D5C /* app.strings in Resources */,
+				3F8F97C924B786EB00281D5C /* Images.xcassets in Resources */,
 				3F4A65EB24B6A6CE00D53C3B /* LaunchScreen.storyboard in Resources */,
 				3F4A65E824B6A6CE00D53C3B /* Assets.xcassets in Resources */,
 				3F4A65E624B6A6CD00D53C3B /* Main.storyboard in Resources */,
@@ -354,13 +391,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F8F97C324B6D66600281D5C /* TransformersListResponse.swift in Sources */,
+				3F8F97CE24B8072600281D5C /* MainViewController.swift in Sources */,
 				3F8F97B724B6C06200281D5C /* ViewModel.swift in Sources */,
+				3F8F97C624B7858600281D5C /* SplashScreenViewController.swift in Sources */,
 				3F8F97B524B6AEFD00281D5C /* ApiManager.swift in Sources */,
 				3F4A65E324B6A6CD00D53C3B /* ViewController.swift in Sources */,
 				3F4A65DF24B6A6CD00D53C3B /* AppDelegate.swift in Sources */,
 				3F4A65E124B6A6CD00D53C3B /* SceneDelegate.swift in Sources */,
 				3F8F97C124B6CD7500281D5C /* Transformer.swift in Sources */,
 				3F8F97BA24B6C63D00281D5C /* KeychainService.swift in Sources */,
+				3F8F97CC24B7A38900281D5C /* SplashScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
