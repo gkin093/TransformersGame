@@ -26,14 +26,12 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func create(_ sender: UIButton) {
-        let transformer = Transformer(name: "Teste", strength: 2, intelligence: 4, speed: 4, endurance: 5, rank: 6, courage: 5, firepower: 6, skill: 6, team: "D")
-        viewModel.create(transformer)
+        self.route(nil)
     }
     
     func setupObservables() {
         viewModel.hasToken.subscribe { hasToken in
             if hasToken.element ?? false {
-                //chamar listar
                 self.viewModel.listTransformers()
             } else {
                 //dar algum alerta de erro
@@ -44,7 +42,21 @@ class MainViewController: UIViewController {
             cell.transformer = transformer
         }.disposed(by: disposeBag)
         
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                if let cell = self?.tableView.cellForRow(at: indexPath) as? TransformerTableViewCell,
+                    let transformer = cell.transformer {
+                    self?.route(transformer)
+                }
+            }).disposed(by: disposeBag)
         
+    }
+    
+    private func route(_ transformer: Transformer?) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let formViewController = storyboard.instantiateViewController(withIdentifier: "FormViewController") as! FormViewController
+        formViewController.viewModel.transformer = transformer
+        self.present(formViewController, animated: true, completion: nil)
     }
     
     private func registerCell() {
@@ -65,13 +77,4 @@ class MainViewController: UIViewController {
         viewModel.listTransformers()
         refreshControl.endRefreshing()
     }
-    //
-    //    @IBAction func atualizar(_ sender: Any) {
-    //        let transformer = Transformer(name: "Teste", strength: 2, intelligence: 4, speed: 4, endurance: 5, rank: 6, courage: 5, firepower: 6, skill: 6, team: "D")
-    //        viewModel.update(transformer)
-    //    }
-    //
-    //    @IBAction func deletar(_ sender: Any) {
-    //        viewModel.delete(id: "dfsadf")
-    //    }
 }
