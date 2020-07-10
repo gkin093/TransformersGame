@@ -7,22 +7,37 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 
-class ViewModel {
+class MainViewModel {
     
     var list: [Transformer] = []
     
+    private let hasTokenVariable = BehaviorRelay(value: false)
+    var hasToken: Observable<Bool> {
+        return hasTokenVariable.asObservable()
+    }
+    private let transformersListVariable: BehaviorRelay<[Transformer]> = BehaviorRelay(value: [])
+    var transformersList: Observable<[Transformer]> {
+        return transformersListVariable.asObservable()
+    }
+    public let transfomersList: PublishSubject<[Transformer]> = PublishSubject()
     func generateToken() {
-        APIMAnager.requestData(path: "allspark", method: .get, parameters: nil, header: nil) { (result) in
-            switch result {
-            case .success(let data):
-                if let data = data, let token = String(data: data, encoding: .utf8) {
-                    print(token)
-                    KeychainService.save(service: KeychainConstant.tokenKey, token: token as NSString)
+        if KeychainService.load(service: KeychainConstant.tokenKey) == nil {
+            APIMAnager.requestData(path: "allspark", method: .get, parameters: nil, header: nil) { (result) in
+                switch result {
+                case .success(let data):
+                    if let data = data, let token = String(data: data, encoding: .utf8) {
+                        KeychainService.save(service: KeychainConstant.tokenKey, token: token as NSString)
+                        self.hasTokenVariable.accept(true)
+                    }
+                case .failure:
+                    self.hasTokenVariable.accept(false)
                 }
-            case .failure(let error):
-                print(error)
             }
+        } else {
+            hasTokenVariable.accept(true)
         }
     }
     
@@ -59,7 +74,7 @@ class ViewModel {
                 if let data = data {
                     let decoder = JSONDecoder()
                     let parsedData = try! decoder.decode(TransformersListResponse.self, from: data)
-                    self.list = parsedData.transformers
+                    self.transformersListVariable.accept(parsedData.transformers)
                     print(parsedData.transformers.count)
                 }
             case .failure(let error):
@@ -93,22 +108,25 @@ class ViewModel {
         }
     }
     
+    func delete(at indexPath: IndexPath) {
+        let transformer = self.transformersListVariable.value[indexPath.row]
+        self.delete(id: transformer.id ?? "")
+    }
+    
     func delete(id: String) {
         let token = KeychainService.load(service: KeychainConstant.tokenKey) as String?
         let headers = [
             "Authorization": "Bearer \(token ?? "")",
             "Content-Type": "application/json"
         ]
-        if let transfomerId = self.list.first?.id {
-            APIMAnager.requestData(path: "transformers/\(transfomerId)", method: .delete, parameters: nil, header: headers) { (result) in
-                switch result {
-                case .success(let data):
-                    if let data = data {
-                        print(String(data: data, encoding: .utf8))
-                    }
-                case .failure(let error):
-                    print(error)
+        APIMAnager.requestData(path: "transformers/\(id)", method: .delete, parameters: nil, header: headers) { (result) in
+            switch result {
+            case .success(let data):
+                if let data = data {
+                    print(String(data: data, encoding: .utf8))
                 }
+            case .failure(let error):
+                print(error)
             }
         }
     }
