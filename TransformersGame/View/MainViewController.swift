@@ -29,6 +29,12 @@ class MainViewController: UIViewController {
         self.route(nil)
     }
     
+    @IBAction func duelAction(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let duelViewController = storyboard.instantiateViewController(withIdentifier: "DuelViewController") as! DuelViewController
+        duelViewController.viewModel.transformersList = self.viewModel.list
+        self.present(duelViewController, animated: true, completion: nil)
+    }
     func setupObservables() {
         viewModel.hasToken.subscribe { hasToken in
             if hasToken.element ?? false {

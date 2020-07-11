@@ -32,6 +32,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGe-vL-zLE">
                                         <rect key="frame" x="199" y="1" width="183" height="30"/>
                                         <state key="normal" title="Duel"/>
+                                        <connections>
+                                            <action selector="duelAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wXi-H1-Auw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -335,6 +338,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywV-cr-VzM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1082" y="98"/>
+        </scene>
+        <!--Duel View Controller-->
+        <scene sceneID="xIN-WL-txZ">
+            <objects>
+                <viewController storyboardIdentifier="DuelViewController" id="JOa-JE-zsx" customClass="DuelViewController" customModule="TransformersGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a3Z-8c-koe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSC-5t-qPW">
+                                <rect key="frame" x="16" y="422" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S01-aC-NC8">
+                                <rect key="frame" x="16" y="454" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bt1-bB-AmK">
+                                <rect key="frame" x="16" y="814" width="382" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Tn3-JK-WwJ"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeAction:" destination="JOa-JE-zsx" eventType="touchUpInside" id="bT8-7u-jCv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mVJ-ea-Omn" firstAttribute="bottom" secondItem="bt1-bB-AmK" secondAttribute="bottom" constant="16" id="AGj-2c-U2b"/>
+                            <constraint firstItem="mVJ-ea-Omn" firstAttribute="trailing" secondItem="YSC-5t-qPW" secondAttribute="trailing" constant="16" id="CNj-5c-B5v"/>
+                            <constraint firstItem="YSC-5t-qPW" firstAttribute="leading" secondItem="mVJ-ea-Omn" secondAttribute="leading" constant="16" id="DUl-ye-07f"/>
+                            <constraint firstItem="YSC-5t-qPW" firstAttribute="centerY" secondItem="a3Z-8c-koe" secondAttribute="centerY" constant="-16" id="INL-95-QUi"/>
+                            <constraint firstItem="mVJ-ea-Omn" firstAttribute="trailing" secondItem="S01-aC-NC8" secondAttribute="trailing" constant="16" id="Nay-lz-Pig"/>
+                            <constraint firstItem="S01-aC-NC8" firstAttribute="leading" secondItem="mVJ-ea-Omn" secondAttribute="leading" constant="16" id="dcp-Gv-fGN"/>
+                            <constraint firstItem="mVJ-ea-Omn" firstAttribute="trailing" secondItem="bt1-bB-AmK" secondAttribute="trailing" constant="16" id="g6y-1h-PxC"/>
+                            <constraint firstItem="S01-aC-NC8" firstAttribute="centerY" secondItem="a3Z-8c-koe" secondAttribute="centerY" constant="16" id="oH5-Jy-TJk"/>
+                            <constraint firstItem="bt1-bB-AmK" firstAttribute="leading" secondItem="mVJ-ea-Omn" secondAttribute="leading" constant="16" id="u9Y-Co-M6k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mVJ-ea-Omn"/>
+                    </view>
+                    <connections>
+                        <outlet property="resultLabel" destination="YSC-5t-qPW" id="gFj-wq-qVm"/>
+                        <outlet property="survivorsLabel" destination="S01-aC-NC8" id="tnN-1c-dJP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="32l-8H-D2T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2065" y="105"/>
         </scene>
     </scenes>
 </document>
