@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var duelButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,6 +31,10 @@ class MainViewController: UIViewController {
         duelButton.layer.borderColor = UIColor.white.cgColor
         createButton.layer.borderWidth = 2
         createButton.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
     }
     
     @IBAction func create(_ sender: UIButton) {
