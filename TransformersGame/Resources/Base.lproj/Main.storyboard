@@ -15,46 +15,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_image" translatesAutoresizingMaskIntoConstraints="NO" id="PFH-90-GBQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="762"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dn5-dj-4C4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="770"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="762"/>
+                                <color key="backgroundColor" red="0.0094114313471502786" green="0.0094114313471502786" blue="0.0094114313471502786" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mf4-QP-HPZ">
-                                <rect key="frame" x="16" y="830" width="382" height="32"/>
+                                <rect key="frame" x="16" y="822" width="382" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmT-ro-wls">
-                                        <rect key="frame" x="0.0" y="1" width="183" height="30"/>
-                                        <state key="normal" title="Create Char"/>
+                                        <rect key="frame" x="0.0" y="2" width="183" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="CREATE CHAR">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="create:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ITl-Cc-hk7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGe-vL-zLE">
-                                        <rect key="frame" x="199" y="1" width="183" height="30"/>
-                                        <state key="normal" title="Duel"/>
+                                        <rect key="frame" x="199" y="2" width="183" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="DUEL">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="duelAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wXi-H1-Auw"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="qAn-g3-NVt"/>
+                                    <constraint firstAttribute="height" constant="40" id="qAn-g3-NVt"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PFH-90-GBQ" secondAttribute="trailing" id="1HM-up-CI1"/>
                             <constraint firstItem="Dn5-dj-4C4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2IN-jq-DSQ"/>
                             <constraint firstItem="mf4-QP-HPZ" firstAttribute="top" secondItem="Dn5-dj-4C4" secondAttribute="bottom" constant="16" id="60i-ts-Ilf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mf4-QP-HPZ" secondAttribute="bottom" id="AJV-rU-ksg"/>
+                            <constraint firstItem="mf4-QP-HPZ" firstAttribute="top" secondItem="PFH-90-GBQ" secondAttribute="bottom" constant="16" id="DEl-wT-3Xh"/>
                             <constraint firstItem="Dn5-dj-4C4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Id6-Wj-GRm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dn5-dj-4C4" secondAttribute="trailing" id="N6c-O1-8nG"/>
                             <constraint firstItem="mf4-QP-HPZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="axG-wF-WCF"/>
+                            <constraint firstItem="PFH-90-GBQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hTi-pl-6tP"/>
+                            <constraint firstItem="PFH-90-GBQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ipF-dg-aI5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mf4-QP-HPZ" secondAttribute="trailing" constant="16" id="svE-fa-3Al"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="createButton" destination="lmT-ro-wls" id="cyj-Zg-2Gm"/>
+                        <outlet property="duelButton" destination="CGe-vL-zLE" id="Fjg-dC-Tou"/>
                         <outlet property="tableView" destination="Dn5-dj-4C4" id="VCj-wt-xHX"/>
                     </connections>
                 </viewController>
@@ -394,4 +409,7 @@
             <point key="canvasLocation" x="2065" y="105"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background_image" width="627" height="1280"/>
+    </resources>
 </document>
