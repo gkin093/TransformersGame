@@ -83,7 +83,7 @@ class MainViewModel {
         APIMAnager.requestData(path: "transformers/\(id)", method: .delete, parameters: nil, header: headers) { (result) in
             switch result {
             case .success(let data):
-                if let data = data {
+                if let _ = data {
                     self.listTransformers()
                 }
             case .failure(let error):
