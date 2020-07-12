@@ -22,6 +22,10 @@ class Transformer: Codable {
     var team: String
     var team_icon: String?
     
+    var overallRating: Int {
+        return self.strength + self.intelligence + self.speed + self.endurance + self.firepower
+    }
+    
     init(name: String, strength: Int, intelligence: Int, speed: Int, endurance: Int, rank: Int, courage: Int, firepower: Int, skill: Int, team: String) {
         self.name = name
         self.strength = strength
@@ -54,7 +58,7 @@ class Transformer: Codable {
     
     func toUpdateDictionary() -> [String : Any] {
         return [
-            "id": self.id,
+            "id": self.id!,
             "name": self.name,
             "strength": self.strength,
             "intelligence": self.intelligence,

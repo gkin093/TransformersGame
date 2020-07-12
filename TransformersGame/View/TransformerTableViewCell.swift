@@ -13,12 +13,17 @@ class TransformerTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var teamImage: UIImageView!
     
     var transformer: Transformer? {
         didSet {
             guard let transformer = transformer else { return }
-            nameLabel.text = transformer.name
-            idLabel.text = transformer.id
+            nameLabel.text = transformer.name.uppercased()
+            idLabel.text = "OVERALL: \(transformer.overallRating)"
+            if let stringUrl = transformer.team_icon {
+                teamImage.downloaded(from: stringUrl)
+            }
+            
         }
     }
     

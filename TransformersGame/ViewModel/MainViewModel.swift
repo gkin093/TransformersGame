@@ -21,6 +21,10 @@ class MainViewModel {
         return transformersListVariable.asObservable()
     }
 
+    var list: [Transformer] {
+        return transformersListVariable.value
+    }
+    
     func generateToken() {
         if KeychainService.load(service: KeychainConstant.tokenKey) == nil {
             APIMAnager.requestData(path: "allspark", method: .get, parameters: nil, header: nil) { (result) in

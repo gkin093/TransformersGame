@@ -16,19 +16,37 @@ class MainViewController: UIViewController {
     let disposeBag = DisposeBag()
     private var transformers: [Transformer] = []
     
+    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var duelButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.black
         configureTableView()
         setupObservables()
         viewModel.generateToken()
+        duelButton.layer.borderWidth = 2
+        duelButton.layer.borderColor = UIColor.white.cgColor
+        createButton.layer.borderWidth = 2
+        createButton.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
     }
     
     @IBAction func create(_ sender: UIButton) {
         self.route(nil)
     }
     
+    @IBAction func duelAction(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let duelViewController = storyboard.instantiateViewController(withIdentifier: "DuelViewController") as! DuelViewController
+        duelViewController.viewModel.transformersList = self.viewModel.list
+        self.present(duelViewController, animated: true, completion: nil)
+    }
     func setupObservables() {
         viewModel.hasToken.subscribe { hasToken in
             if hasToken.element ?? false {
@@ -39,6 +57,7 @@ class MainViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         viewModel.transformersList.asObservable().bind(to: tableView.rx.items(cellIdentifier: TransformerTableViewCell.identifier, cellType: TransformerTableViewCell.self)) { row, transformer, cell in
+            cell.backgroundColor = UIColor.clear
             cell.transformer = transformer
         }.disposed(by: disposeBag)
         

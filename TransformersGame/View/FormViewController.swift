@@ -30,6 +30,7 @@ class FormViewController: UIViewController {
     @IBOutlet weak var skillValueLabel: UILabel!
     @IBOutlet weak var skillStepper: UIStepper!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var pickerTeam: UIPickerView!
     
     let viewModel = FormViewModel()
@@ -49,9 +50,9 @@ class FormViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if viewModel.transformer == nil {
-            saveButton.titleLabel?.text = "Create"
+            saveButton.titleLabel?.text = "CREATE"
         } else {
-            saveButton.titleLabel?.text = "Update"
+            saveButton.titleLabel?.text = "UPDATE"
         }
     }
     
@@ -76,6 +77,10 @@ class FormViewController: UIViewController {
             skillStepper.value = Double(transformer.skill)
             pickerTeam.selectRow(transformer.team == "A" ? 0 : 1, inComponent: 0, animated: true)
         }
+        saveButton.layer.borderWidth = 2
+        saveButton.layer.borderColor = UIColor.white.cgColor
+        cancelButton.layer.borderColor = UIColor.white.cgColor
+        cancelButton.layer.borderWidth = 2
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
