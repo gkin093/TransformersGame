@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.black
+        viewModel.delegate = self
         configureTableView()
         setupObservables()
         viewModel.generateToken()
@@ -135,5 +136,25 @@ class MainViewController: UIViewController {
 extension MainViewController: FormViewControllerDelegate {
     func reloadData() {
         self.viewModel.listTransformers()
+    }
+}
+
+extension MainViewController: MainViewModelDelegate {
+    func onErrorList() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: "Ops, something went wrong!", preferredStyle: UIAlertController.Style.alert)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertAction.Style.default, handler: { (action) in
+                self.dismiss(animated: true) {
+                    self.viewModel.listTransformers()
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Later", style: .default, handler: { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

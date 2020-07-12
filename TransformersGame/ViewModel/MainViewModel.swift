@@ -10,6 +10,10 @@ import Foundation
 import RxSwift
 import RxRelay
 
+protocol MainViewModelDelegate: class {
+    func onErrorList()
+}
+
 class MainViewModel {
     private let hasTokenVariable: BehaviorRelay<APICallResult> = BehaviorRelay(value: .notCalled)
     var hasToken: Observable<APICallResult> {
@@ -24,6 +28,8 @@ class MainViewModel {
     var list: [Transformer] {
         return transformersListVariable.value
     }
+    
+    weak var delegate: MainViewModelDelegate?
     
     func generateToken() {
         if KeychainService.load(service: KeychainConstant.tokenKey) == nil {
@@ -57,8 +63,8 @@ class MainViewModel {
                     let parsedData = try! decoder.decode(TransformersListResponse.self, from: data)
                     self.transformersListVariable.accept(parsedData.transformers)
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self.delegate?.onErrorList()
             }
         }
     }
@@ -91,9 +97,4 @@ enum APICallResult {
     case success
     case notCalled
     case error
-}
-
-struct ListResult {
-    let transformers: [Transformer]
-    let result: APICallResult
 }
