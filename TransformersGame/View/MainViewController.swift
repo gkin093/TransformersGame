@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     let disposeBag = DisposeBag()
     private var transformers: [Transformer] = []
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var duelButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -50,6 +51,7 @@ class MainViewController: UIViewController {
     func setupObservables() {
         viewModel.hasToken.subscribe { hasToken in
             if hasToken.element ?? false {
+                self.loadingIndicator.startAnimating()
                 self.viewModel.listTransformers()
             } else {
                 //dar algum alerta de erro
@@ -57,6 +59,7 @@ class MainViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         viewModel.transformersList.asObservable().bind(to: tableView.rx.items(cellIdentifier: TransformerTableViewCell.identifier, cellType: TransformerTableViewCell.self)) { row, transformer, cell in
+            self.loadingIndicator.stopAnimating()
             cell.backgroundColor = UIColor.clear
             cell.transformer = transformer
         }.disposed(by: disposeBag)
@@ -74,6 +77,7 @@ class MainViewController: UIViewController {
     private func route(_ transformer: Transformer?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let formViewController = storyboard.instantiateViewController(withIdentifier: "FormViewController") as! FormViewController
+        formViewController.delegate = self
         formViewController.viewModel.transformer = transformer
         self.present(formViewController, animated: true, completion: nil)
     }
@@ -89,11 +93,33 @@ class MainViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        tableView.rx.itemDeleted.subscribe(onNext: { self.viewModel.delete(at: $0) }).disposed(by: disposeBag)
+        tableView.rx.itemDeleted.subscribe(onNext: { self.deleteItem(at: $0) }).disposed(by: disposeBag)
+    }
+    
+    func deleteItem(at indexPath: IndexPath) {
+        // create the alert
+        let alert = UIAlertController(title: "Delete", message: "Are you sure you want to destroy this transformer?", preferredStyle: UIAlertController.Style.alert)
+
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (action) in
+            self.viewModel.delete(at: indexPath)
+        }))
+
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func refreshTableView(refreshControl: UIRefreshControl) {
         viewModel.listTransformers()
         refreshControl.endRefreshing()
+    }
+}
+
+extension MainViewController: FormViewControllerDelegate {
+    func reloadData() {
+        self.viewModel.listTransformers()
     }
 }

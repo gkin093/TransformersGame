@@ -79,7 +79,7 @@ class MainViewModel {
             switch result {
             case .success(let data):
                 if let data = data {
-                    print(String(data: data, encoding: .utf8))
+                    self.listTransformers()
                 }
             case .failure(let error):
                 print(error)
