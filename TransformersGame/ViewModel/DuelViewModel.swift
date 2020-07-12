@@ -65,7 +65,7 @@ class DuelViewModel {
         
         for i in 0...autobotsList.count - 1 {
             let autobot = autobotsList[i]
-            let decepticom = autobotsList[i]
+            let decepticom = decepticonsList[i]
             if autobot.courage <= decepticom.courage - 4 && autobot.strength <= decepticom.strength - 3 {
                 autobotsDestroyed += 1
             } else if decepticom.courage <= autobot.courage - 4 && decepticom.strength <= autobot.strength - 3 {
