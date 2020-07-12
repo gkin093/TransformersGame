@@ -16,8 +16,8 @@ class DuelViewModel {
             thereIsNoAutobots = autobotsList.count == 0
             thereIsNoDecepticon = decepticonsList.count == 0
             self.teamEqualizer()
-            self.autobotsHasSpecials = (autobotsList.filter { $0.name == "Optimus Prime" || $0.name == "Predaking" }).count > 0
-            self.deceptionsHasSpceials = (decepticonsList.filter { $0.name == "Optimus Prime" || $0.name == "Predaking" }).count > 0
+            self.autobotsHasSpecials = (autobotsList.filter { $0.name.uppercased() == "OPTIMUS PRIME" || $0.name.uppercased() == "PREDAKING" }).count > 0
+            self.deceptionsHasSpceials = (decepticonsList.filter { $0.name.uppercased() == "OPTIMUS PRIME" || $0.name.uppercased() == "PREDAKING" }).count > 0
             print(autobotsList)
         }
     }
