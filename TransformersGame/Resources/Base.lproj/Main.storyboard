@@ -22,6 +22,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="762"/>
                                 <color key="backgroundColor" red="0.0094114313471502786" green="0.0094114313471502786" blue="0.0094114313471502786" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="4DU-mS-l1o">
+                                <rect key="frame" x="189" y="430" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mf4-QP-HPZ">
                                 <rect key="frame" x="16" y="822" width="382" height="40"/>
                                 <subviews>
@@ -70,6 +75,7 @@
                     <connections>
                         <outlet property="createButton" destination="lmT-ro-wls" id="cyj-Zg-2Gm"/>
                         <outlet property="duelButton" destination="CGe-vL-zLE" id="Fjg-dC-Tou"/>
+                        <outlet property="loadingIndicator" destination="4DU-mS-l1o" id="dzd-qY-bMT"/>
                         <outlet property="tableView" destination="Dn5-dj-4C4" id="VCj-wt-xHX"/>
                     </connections>
                 </viewController>
@@ -103,7 +109,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Un-HW-v3h">
                                                 <rect key="frame" x="92.333333333333343" y="0.0" width="289.66666666666663" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -349,16 +355,33 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0094114313469999995" green="0.0094114313469999995" blue="0.0094114313469999995" alpha="0.29976342430000003" colorSpace="custom" customColorSpace="displayP3"/>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tj-bT-Gnl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hYJ-ST-09U">
+                                        <rect key="frame" x="188.66666666666666" y="429.66666666666669" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="hYJ-ST-09U" firstAttribute="centerY" secondItem="5tj-bT-Gnl" secondAttribute="centerY" id="7hq-Rq-e1g"/>
+                                    <constraint firstItem="hYJ-ST-09U" firstAttribute="centerX" secondItem="5tj-bT-Gnl" secondAttribute="centerX" id="p6u-Pu-TpJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="goD-bl-nec" firstAttribute="leading" secondItem="zag-Kk-TDu" secondAttribute="leading" id="33n-8h-Z1f"/>
                             <constraint firstItem="IRq-42-J1j" firstAttribute="leading" secondItem="zag-Kk-TDu" secondAttribute="leading" constant="16" id="8c0-Bs-qtE"/>
                             <constraint firstItem="zag-Kk-TDu" firstAttribute="bottom" secondItem="IRq-42-J1j" secondAttribute="bottom" constant="16" id="DdS-of-A1x"/>
+                            <constraint firstItem="5tj-bT-Gnl" firstAttribute="trailing" secondItem="zag-Kk-TDu" secondAttribute="trailing" id="FBy-TE-oe6"/>
                             <constraint firstItem="zag-Kk-TDu" firstAttribute="trailing" secondItem="goD-bl-nec" secondAttribute="trailing" id="HOy-Vl-ZO4"/>
                             <constraint firstItem="zag-Kk-TDu" firstAttribute="trailing" secondItem="IRq-42-J1j" secondAttribute="trailing" constant="16" id="Tic-h0-ojA"/>
                             <constraint firstItem="IRq-42-J1j" firstAttribute="top" secondItem="zag-Kk-TDu" secondAttribute="top" constant="16" id="iww-LF-zG5"/>
+                            <constraint firstItem="5tj-bT-Gnl" firstAttribute="top" secondItem="mg0-F7-aJZ" secondAttribute="top" id="rIL-vn-a9M"/>
                             <constraint firstItem="goD-bl-nec" firstAttribute="top" secondItem="mg0-F7-aJZ" secondAttribute="top" id="tQB-cD-WWW"/>
+                            <constraint firstItem="5tj-bT-Gnl" firstAttribute="leading" secondItem="zag-Kk-TDu" secondAttribute="leading" id="yIu-5R-Quu"/>
+                            <constraint firstAttribute="bottom" secondItem="5tj-bT-Gnl" secondAttribute="bottom" id="yyG-of-Qqm"/>
                             <constraint firstAttribute="bottom" secondItem="goD-bl-nec" secondAttribute="bottom" id="zvq-VN-hVE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zag-Kk-TDu"/>
@@ -373,6 +396,7 @@
                         <outlet property="firepowerValueLabel" destination="9KH-Yh-hj4" id="xdp-YA-3E7"/>
                         <outlet property="intelligenceStepper" destination="fBK-uy-eW4" id="nNR-84-pkf"/>
                         <outlet property="intelligenceValueLabel" destination="5SX-KB-Dnq" id="JUt-Or-fuA"/>
+                        <outlet property="loadingView" destination="5tj-bT-Gnl" id="xVL-NG-DmT"/>
                         <outlet property="nameTextField" destination="7Un-HW-v3h" id="Cvv-o2-OsF"/>
                         <outlet property="pickerTeam" destination="sq1-aG-yqd" id="qbs-TU-jnK"/>
                         <outlet property="rankStepper" destination="sgI-4K-nFT" id="28E-ol-LzA"/>
@@ -388,7 +412,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ywV-cr-VzM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082" y="98"/>
+            <point key="canvasLocation" x="1081.1594202898552" y="97.767857142857139"/>
         </scene>
         <!--Duel View Controller-->
         <scene sceneID="xIN-WL-txZ">

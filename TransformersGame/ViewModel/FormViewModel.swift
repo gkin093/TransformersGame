@@ -10,11 +10,22 @@ import Foundation
 import RxSwift
 import RxRelay
 
+enum SubimmitStatus {
+    case saved
+    case notSaved
+    case notSubmmited
+}
+
 class FormViewModel {
     var transformer: Transformer?
     private let teamsVariable: BehaviorRelay<[Team]> = BehaviorRelay(value: [.autobots, .decepticons])
     var teams: Observable<[Team]> {
         return teamsVariable.asObservable()
+    }
+    
+    private let submmitStatusVariable = BehaviorRelay(value: SubimmitStatus.notSubmmited)
+    var submmitStatus: Observable<SubimmitStatus> {
+        return submmitStatusVariable.asObservable()
     }
     
     func getSelectedTeam(_ value: Int) -> String {
@@ -36,8 +47,10 @@ class FormViewModel {
                     let decoder = JSONDecoder()
                     let parsedData = try! decoder.decode(Transformer.self, from: data)
                     print("id: \(parsedData.id!)")
+                    self.submmitStatusVariable.accept(.saved)
                 }
             case .failure(let error):
+                self.submmitStatusVariable.accept(.notSaved)
                 print(error)
             }
         }
@@ -58,8 +71,10 @@ class FormViewModel {
                     let decoder = JSONDecoder()
                     let parsedData = try! decoder.decode(Transformer.self, from: data)
                     print("id: \(parsedData.id!)")
+                    self.submmitStatusVariable.accept(.saved)
                 }
             case .failure(let error):
+                self.submmitStatusVariable.accept(.notSaved)
                 print(error)
             }
         }

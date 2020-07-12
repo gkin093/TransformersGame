@@ -10,6 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol FormViewControllerDelegate: class {
+    func reloadData()
+}
+
 class FormViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -32,15 +36,16 @@ class FormViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var pickerTeam: UIPickerView!
+    @IBOutlet weak var loadingView: UIView!
     
     let viewModel = FormViewModel()
     let disposeBag = DisposeBag()
+    weak var delegate: FormViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.teams.bind(to: pickerTeam.rx.itemTitles) { row, element in
-            return element.rawValue
-        }.disposed(by: disposeBag)
+        loadingView.isHidden = true
+        setupObservable()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -104,6 +109,7 @@ class FormViewController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: UIButton) {
+        loadingView.isHidden = false
         if viewModel.transformer == nil {
             createChar()
         } else {
@@ -136,6 +142,39 @@ class FormViewController: UIViewController {
         viewModel.createChar(transformer: char)
     }
     
+    func setupObservable() {
+        viewModel.teams.bind(to: pickerTeam.rx.itemTitles) { row, element in
+            return element.rawValue
+        }.disposed(by: disposeBag)
+        
+        viewModel.submmitStatus.subscribe { status in
+            DispatchQueue.main.async {
+                self.loadingView.isHidden = true
+                
+                if status.element == SubimmitStatus.saved {
+                    let alert = UIAlertController(title: "Created", message: "Transformer saved successfully", preferredStyle: UIAlertController.Style.alert)
+                    
+                    // add the actions (buttons)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.dismiss(animated: true) {
+                            self.dismiss(animated: true) {
+                                self.delegate?.reloadData()
+                            }
+                        }
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else if status.element == SubimmitStatus.notSaved {
+                    let alert = UIAlertController(title: "Error", message: "Ops, sorry! Something went wrong, try again later!", preferredStyle: UIAlertController.Style.alert)
+                    
+                    // add the actions (buttons)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }.disposed(by: disposeBag)
+    }
 }
 
 enum Team: String {
@@ -154,6 +193,6 @@ enum Team: String {
 
 extension Double {
     var clean: String {
-       return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
 }

@@ -10,9 +10,13 @@ import Foundation
 import RxSwift
 import RxRelay
 
+protocol MainViewModelDelegate: class {
+    func onErrorList()
+}
+
 class MainViewModel {
-    private let hasTokenVariable = BehaviorRelay(value: false)
-    var hasToken: Observable<Bool> {
+    private let hasTokenVariable: BehaviorRelay<APICallResult> = BehaviorRelay(value: .notCalled)
+    var hasToken: Observable<APICallResult> {
         return hasTokenVariable.asObservable()
     }
 
@@ -25,6 +29,8 @@ class MainViewModel {
         return transformersListVariable.value
     }
     
+    weak var delegate: MainViewModelDelegate?
+    
     func generateToken() {
         if KeychainService.load(service: KeychainConstant.tokenKey) == nil {
             APIMAnager.requestData(path: "allspark", method: .get, parameters: nil, header: nil) { (result) in
@@ -32,14 +38,14 @@ class MainViewModel {
                 case .success(let data):
                     if let data = data, let token = String(data: data, encoding: .utf8) {
                         KeychainService.save(service: KeychainConstant.tokenKey, token: token as NSString)
-                        self.hasTokenVariable.accept(true)
+                        self.hasTokenVariable.accept(.success)
                     }
                 case .failure:
-                    self.hasTokenVariable.accept(false)
+                    self.hasTokenVariable.accept(.error)
                 }
             }
         } else {
-            hasTokenVariable.accept(true)
+            hasTokenVariable.accept(.notCalled)
         }
     }
     
@@ -56,10 +62,9 @@ class MainViewModel {
                     let decoder = JSONDecoder()
                     let parsedData = try! decoder.decode(TransformersListResponse.self, from: data)
                     self.transformersListVariable.accept(parsedData.transformers)
-                    print(parsedData.transformers.count)
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self.delegate?.onErrorList()
             }
         }
     }
@@ -78,12 +83,18 @@ class MainViewModel {
         APIMAnager.requestData(path: "transformers/\(id)", method: .delete, parameters: nil, header: headers) { (result) in
             switch result {
             case .success(let data):
-                if let data = data {
-                    print(String(data: data, encoding: .utf8))
+                if let _ = data {
+                    self.listTransformers()
                 }
             case .failure(let error):
                 print(error)
             }
         }
     }
+}
+
+enum APICallResult {
+    case success
+    case notCalled
+    case error
 }
