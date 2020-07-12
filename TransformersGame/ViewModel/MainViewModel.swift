@@ -11,8 +11,8 @@ import RxSwift
 import RxRelay
 
 class MainViewModel {
-    private let hasTokenVariable = BehaviorRelay(value: false)
-    var hasToken: Observable<Bool> {
+    private let hasTokenVariable: BehaviorRelay<APICallResult> = BehaviorRelay(value: .notCalled)
+    var hasToken: Observable<APICallResult> {
         return hasTokenVariable.asObservable()
     }
 
@@ -32,14 +32,14 @@ class MainViewModel {
                 case .success(let data):
                     if let data = data, let token = String(data: data, encoding: .utf8) {
                         KeychainService.save(service: KeychainConstant.tokenKey, token: token as NSString)
-                        self.hasTokenVariable.accept(true)
+                        self.hasTokenVariable.accept(.success)
                     }
                 case .failure:
-                    self.hasTokenVariable.accept(false)
+                    self.hasTokenVariable.accept(.error)
                 }
             }
         } else {
-            hasTokenVariable.accept(true)
+            hasTokenVariable.accept(.notCalled)
         }
     }
     
@@ -56,7 +56,6 @@ class MainViewModel {
                     let decoder = JSONDecoder()
                     let parsedData = try! decoder.decode(TransformersListResponse.self, from: data)
                     self.transformersListVariable.accept(parsedData.transformers)
-                    print(parsedData.transformers.count)
                 }
             case .failure(let error):
                 print(error)
@@ -86,4 +85,15 @@ class MainViewModel {
             }
         }
     }
+}
+
+enum APICallResult {
+    case success
+    case notCalled
+    case error
+}
+
+struct ListResult {
+    let transformers: [Transformer]
+    let result: APICallResult
 }

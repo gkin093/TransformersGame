@@ -164,7 +164,13 @@ class FormViewController: UIViewController {
                     }))
                     self.present(alert, animated: true, completion: nil)
                 } else if status.element == SubimmitStatus.notSaved {
+                    let alert = UIAlertController(title: "Error", message: "Ops, sorry! Something went wrong, try again later!", preferredStyle: UIAlertController.Style.alert)
                     
+                    // add the actions (buttons)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }.disposed(by: disposeBag)

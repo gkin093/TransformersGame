@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-          return .lightContent
+        return .lightContent
     }
     
     @IBAction func create(_ sender: UIButton) {
@@ -50,11 +50,25 @@ class MainViewController: UIViewController {
     }
     func setupObservables() {
         viewModel.hasToken.subscribe { hasToken in
-            if hasToken.element ?? false {
+            if hasToken.element ?? .notCalled == .notCalled || hasToken.element ?? .notCalled == .success {
                 self.loadingIndicator.startAnimating()
                 self.viewModel.listTransformers()
             } else {
-                //dar algum alerta de erro
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: "Ops, something went wrong!", preferredStyle: UIAlertController.Style.alert)
+                    
+                    // add the actions (buttons)
+                    alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.dismiss(animated: true) {
+                            self.viewModel.generateToken()
+                        }
+                    }))
+                    
+                    alert.addAction(UIAlertAction(title: "Later", style: .default, handler: { (action) in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }.disposed(by: disposeBag)
         
@@ -99,7 +113,7 @@ class MainViewController: UIViewController {
     func deleteItem(at indexPath: IndexPath) {
         // create the alert
         let alert = UIAlertController(title: "Delete", message: "Are you sure you want to destroy this transformer?", preferredStyle: UIAlertController.Style.alert)
-
+        
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
@@ -107,7 +121,7 @@ class MainViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { (action) in
             self.viewModel.delete(at: indexPath)
         }))
-
+        
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
